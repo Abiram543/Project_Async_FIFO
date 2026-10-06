@@ -13,22 +13,28 @@ module fifo_mem #(parameter DATA_WIDTH = 8,
 );
 
 reg [DATA_WIDTH-1:0] fifomem [DEPTH-1:0];
-
+// Write Logic
 always @(posedge wclk) begin
     if (!full && wr_en) begin
             fifomem[Wr_Addr] <= Data_in;
     end
 end
+// Read Logic
+// always @(posedge rclk or negedge rdrstn) begin
+//     if(!rdrstn) begin
+//         Data_out <= 'b0;
+//     end
+//     else begin
+//         if (!empty && rd_en) begin
+//             Data_out <= fifomem[Rd_Addr];
+//         end
+//     end
+// end
+always @(*) begin
+    if (!empty) begin
+        Data_out = fifomem[Rd_Addr];
+    end
+    else Data_out = 0;
 
-always @(posedge rclk or negedge rdrstn) begin
-    if(!rdrstn) begin
-        Data_out <= 'b0;
-    end
-    else begin
-        if (!empty && rd_en) begin
-            Data_out <= fifomem[Rd_Addr];
-        end
-    end
 end
-
 endmodule
