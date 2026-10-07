@@ -1,0 +1,14 @@
+current_design "fifo_top"
+clock -name wclk -domain d1 -period 100 -tag CLOCK_DOMAIN_1 -edge {0 50}
+clock -name rclk -domain d2 -period 102 -tag CLOCK_DOMAIN_2 -edge {0 51}
+
+reset -name rdrstn -value 0
+reset -name wrstn -value 0
+
+input -name wr_en -clock wclk
+input -name Data_in -clock wclk
+input -name rd_en -clock rclk
+
+output -name full -clock wclk
+output -name empty -clock rclk
+output -name Data_out -clock rclk
