@@ -35,6 +35,5 @@ always @(*) begin
         Data_out = fifomem[Rd_Addr];
     end
     else Data_out = 0;
-
 end
 endmodule
