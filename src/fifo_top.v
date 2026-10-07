@@ -15,7 +15,7 @@ wire [ADDR_WIDTH:0] g_rdptr_sync, g_wptr, g_rdptr, g_wptr_sync;
 
 
 // FIFO Memory
-fifo_mem #(.DATA_WIDTH(DATA_WIDTH), .DEPTH(DEPTH), .ADDR_WIDTH(ADDR_WIDTH)) inst1 (.wclk(wclk), .rclk(rclk), .rd_en(rd_en), .wr_en(wr_en), .rdrstn(rdrstn), .Data_in(Data_in), .Data_out(Data_out), .full(full), .empty(empty), .Wr_Addr(Wr_Addr), .Rd_Addr(Rd_Addr));
+fifo_mem #(.DATA_WIDTH(DATA_WIDTH), .DEPTH(DEPTH), .ADDR_WIDTH(ADDR_WIDTH)) inst1 (.wclk(wclk), .wr_en(wr_en), .Data_in(Data_in), .Data_out(Data_out), .full(full), .empty(empty), .Wr_Addr(Wr_Addr), .Rd_Addr(Rd_Addr));
 
 // Write pointer handler
 wr_ptr_handler #(.ADDR_WIDTH(ADDR_WIDTH)) inst2(.wclk(wclk), .wrstn(wrstn), .wr_en(wr_en), .full(full), .g_rdptr_sync(g_rdptr_sync), .b_wptr(Wr_Addr), .g_wptr(g_wptr));

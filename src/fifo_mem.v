@@ -3,9 +3,8 @@ module fifo_mem #(parameter DATA_WIDTH = 8,
                   parameter ADDR_WIDTH = 5
 )
 (
-    input wire wclk, rclk,
-    input wire rdrstn,
-    input wire wr_en, rd_en,
+    input wire wclk,
+    input wire wr_en,
     input wire full, empty,
     input wire [DATA_WIDTH-1:0] Data_in,
     input wire [ADDR_WIDTH-1:0] Wr_Addr, Rd_Addr,
